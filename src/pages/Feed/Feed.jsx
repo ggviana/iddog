@@ -4,8 +4,10 @@ import { CategorySelector, ImageList } from 'components'
 
 class Feed extends Component {
   componentDidMount () {
-    const [, preloadedCategory] = this.props.location.search.match(/category=(husky|hound|pug|labrador)/i)
-    if (preloadedCategory) {
+    const matched = this.props.location.search.match(/category=(husky|hound|pug|labrador)/i)
+
+    if (matched) {
+      const [, preloadedCategory] = matched
       loadFeed(preloadedCategory.toLowerCase())
     } else {
       loadFeed()
