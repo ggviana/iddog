@@ -22,7 +22,7 @@ class Feed extends Component {
             <CategorySelector
               active={state.selectedCategory}
               onChange={category => {
-                this.props.history.push(`?category=${category}`)
+                this.props.history.push(`/feed?category=${category}`)
                 loadFeed(category)
               }} />
             {state.isLoading && <span>Loading</span>}
