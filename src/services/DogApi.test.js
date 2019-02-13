@@ -6,7 +6,7 @@ describe('DogAPI', () => {
   it('should login a user', () => {
     const loginEmail = 'ggviana@hotmail.com.br'
 
-    return DogAPI.signup({ email : loginEmail })
+    return DogAPI.signup({ email: loginEmail })
       .then(user => {
         expect(user).toBeDefined()
         expect(user.email).toEqual(loginEmail)
