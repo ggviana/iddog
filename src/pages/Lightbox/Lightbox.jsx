@@ -3,7 +3,7 @@ import React from 'react'
 const Lightbox = ({}) => {
   return (
     <div>
-      <h1>content</h1>
+      <h1>Lightbox</h1>
     </div>
   )
 }
