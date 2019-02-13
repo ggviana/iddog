@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react'
 import { visibleFeed, loadFeed } from 'contexts/feed'
-import { CategorySelector, LightboxLink } from 'components'
+import { CategorySelector, ImageList } from 'components'
 
 class Feed extends Component {
   componentDidMount () {
-    const [,preloadedCategory] = this.props.location.search.match(/category=(husky|hound|pug|labrador)/i)
+    const [, preloadedCategory] = this.props.location.search.match(/category=(husky|hound|pug|labrador)/i)
     if (preloadedCategory) {
       loadFeed(preloadedCategory.toLowerCase())
     } else {
@@ -24,11 +24,9 @@ class Feed extends Component {
                 loadFeed(category)
               }} />
             {state.isLoading && <span>Loading</span>}
-            {state.feed.map(dog => (
-              <LightboxLink key={dog.id} id={dog.id}>
-                <img src={dog.image} height={300} width={300} alt={`A ${state.selectedCategory}`} />
-              </LightboxLink>
-            ))}
+            <ImageList
+              images={state.feed}
+              category={state.selectedCategory} />
           </Fragment>
         ))}
       </Fragment>

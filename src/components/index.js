@@ -2,6 +2,7 @@ import App from 'components/App/App'
 import CategorySelector from 'components/CategorySelector/CategorySelector'
 import EmailInput from 'components/EmailInput/EmailInput'
 import Form from 'components/Form/Form'
+import ImageList from 'components/ImageList/ImageList'
 import LightboxLink from 'components/LightboxLink/LightboxLink'
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute'
 import PublicRoute from 'components/PublicRoute/PublicRoute'
@@ -12,6 +13,7 @@ export {
   CategorySelector,
   EmailInput,
   Form,
+  ImageList,
   LightboxLink,
   PrivateRoute,
   PublicRoute,

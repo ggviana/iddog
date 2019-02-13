@@ -1,0 +1,30 @@
+.ImageList {
+  grid-template-columns: repeat(3, 300px);
+  grid-auto-rows: 200px;
+  grid-gap: 20px;
+  display: grid;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.ImageList-item {
+  height: 100%;
+}
+
+.ImageList-item img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .ImageList {
+    grid-template-columns: repeat(2, 300px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ImageList {
+    grid-template-columns: 300px;
+  }
+}
