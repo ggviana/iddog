@@ -1,7 +1,26 @@
-export default class EntityMap extends Map {
-  get values () {
-    const entries = [ ...this.entries() ]
+class EntityMap {
+  constructor () {
+    this._map = new Map()
+  }
 
-    return entries.map(([key, value]) => value)
+  set (k, v) {
+    this._map.set(k, v)
+    return this
+  }
+
+  merge (map) {
+    map.entries()
+      .map(([key, value]) => this.set(key, value))
+    return this
+  }
+
+  entries () {
+    return [ ...this._map.entries() ]
+  }
+
+  get values () {
+    return this.entries().map(([key, value]) => value)
   }
 }
+
+export default EntityMap
