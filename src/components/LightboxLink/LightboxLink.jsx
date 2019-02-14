@@ -15,7 +15,7 @@ const LightboxLink = ({ id, ...props }) => (
 )
 
 LightboxLink.propTypes = {
-  id: PropTypes.number.isRequired
+  id: PropTypes.string.isRequired
 }
 
 export default LightboxLink
