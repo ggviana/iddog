@@ -8,12 +8,13 @@ import debounce from 'util/debounce'
 
 const Signup = ({ history }) => (
   <Fragment>
-    <h1>Signup</h1>
     {get(form => (
       <Form>
         <EmailInput
           name='email'
           value={form.email}
+          placeholder='Your email'
+          title=' '
           onChange={email => {
             changeEmail(email)
 

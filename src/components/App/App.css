@@ -1,28 +1,34 @@
 .App {
-  text-align: center;
+  margin-top: 20%;
+  animation-name: animate-splash-title;
+  animation-delay: 1s;
+  animation-timing-function: cubic-bezier(0.64, 0.18, 0, 1);
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.App-content {
+  opacity: 0;
+  animation-name: animate-splash-content;
+  animation-delay: 1s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-weight: normal;
+  text-transform: uppercase;
+  text-align: center;
 }
 
-.App-intro {
-  font-size: large;
+@keyframes animate-splash-title {
+  to {
+    margin-top: 30px;
+  }
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes animate-splash-content {
+  to {
+    opacity: 1;
+  }
 }
