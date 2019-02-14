@@ -1,8 +1,16 @@
 import axios from 'axios'
 import EntityMap from 'util/EntityMap'
+import id from 'util/id'
+import LocalStorage from './LocalStorage'
 
 const requester = axios.create({
   baseURL: 'https://api-iddog.idwall.co'
+})
+
+requester.interceptors.response.use(id, data => {
+  if (data.response.status === 401) {
+    LocalStorage.remove('_u')
+  }
 })
 
 export const extractDogIdFromImage = image => image.replace(/^.*?img\/.*?\/.*?_(.*?)\..*/, '$1')
