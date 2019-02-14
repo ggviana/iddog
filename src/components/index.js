@@ -1,4 +1,5 @@
 import App from 'components/App/App'
+import CategorySelector from 'components/CategorySelector/CategorySelector'
 import EmailInput from 'components/EmailInput/EmailInput'
 import Form from 'components/Form/Form'
 import LightboxLink from 'components/LightboxLink/LightboxLink'
@@ -8,6 +9,7 @@ import Routes from 'components/Routes/Routes'
 
 export {
   App,
+  CategorySelector,
   EmailInput,
   Form,
   LightboxLink,

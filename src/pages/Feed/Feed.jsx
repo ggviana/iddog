@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { visibleFeed, loadFeed } from 'contexts/feed'
-import { LightboxLink } from 'components'
+import { CategorySelector, LightboxLink } from 'components'
 
 class Feed extends Component {
   componentDidMount () {
@@ -12,13 +12,7 @@ class Feed extends Component {
       <Fragment>
         {visibleFeed(state => (
           <Fragment>
-            <ul>
-              {['husky', 'hound', 'pug', 'labrador'].map(type => (
-                <li key={type} onClick={() => loadFeed(type)}>
-                  {type}
-                </li>
-              ))}
-            </ul>
+            <CategorySelector active={state.selectedCategory} onChange={loadFeed} />
             {state.isLoading && <span>Loading</span>}
             {state.feed.map(dog => (
               <LightboxLink key={dog.id} id={dog.id}>

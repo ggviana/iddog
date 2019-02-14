@@ -1,0 +1,20 @@
+.CategorySelector {
+  display: flex;
+  list-style: none;
+  text-transform: capitalize;
+  justify-content: center;
+}
+
+.CategorySelector li {
+  cursor: pointer;
+  padding: 0 10px;
+  border-right: 1px solid black;
+}
+
+.CategorySelector li:last-of-type {
+  border: none;
+}
+
+.CategorySelector .active {
+  font-weight: bold;
+}
