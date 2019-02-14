@@ -3,16 +3,28 @@ import { signup } from 'services/DogAPI'
 import { get, changeEmail } from 'contexts/signup'
 import { setCurrentUser } from 'contexts/user'
 import { EmailInput, Form } from 'components'
+import isValidEmail from 'util/isValidEmail'
+import debounce from 'util/debounce'
 
 const Signup = ({ history }) => (
   <Fragment>
     <h1>Signup</h1>
     {get(form => (
-      <Form onSubmit={() => signup(form).then(setCurrentUser).then(() => history.replace('/feed'))}>
+      <Form>
         <EmailInput
           name='email'
           value={form.email}
-          onChange={value => changeEmail(value)}
+          onChange={email => {
+            changeEmail(email)
+
+            debounce(() => {
+              if (isValidEmail(email)) {
+                signup({ email })
+                  .then(setCurrentUser)
+                  .then(() => history.replace('/feed'))
+              }
+            }, 2000)()
+          }}
           required />
       </Form>
     ))}
