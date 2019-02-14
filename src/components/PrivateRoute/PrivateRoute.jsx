@@ -1,11 +1,10 @@
 import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
-import getCurrentUser from 'selectors/getCurrentUser'
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, user, ...rest }) => (
   <Route
     {...rest}
-    render={props => getCurrentUser(user => user == null ? (
+    render={props => user == null ? (
       <Redirect to={{
         pathname: '/signup',
         state: {
@@ -15,7 +14,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       />
     ) : (
       <Component {...props} />
-    ))}
+    )}
   />
 )
 

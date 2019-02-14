@@ -1,11 +1,10 @@
 import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
-import getCurrentUser from 'selectors/getCurrentUser'
 
-const PublicRoute = ({ component: Component, ...rest }) => (
+const PublicRoute = ({ component: Component, user, ...rest }) => (
   <Route
     {...rest}
-    render={props => getCurrentUser(user => user != null ? (
+    render={props => user != null ? (
       <Redirect to={{
         pathname: '/feed',
         state: {
@@ -15,7 +14,7 @@ const PublicRoute = ({ component: Component, ...rest }) => (
       />
     ) : (
       <Component {...props} />
-    ))}
+    )}
   />
 )
 
