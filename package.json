@@ -14,19 +14,21 @@
   "devDependencies": {
     "enzyme": "3.4.4",
     "enzyme-adapter-react-16": "1.2.0",
-    "gh-pages-deploy": "0.5.0",
-    "jest-localstorage-mock": "^2.2.0",
+    "gh-pages": "2.0.1",
+    "jest-localstorage-mock": "2.2.0",
     "react-scripts": "1.1.5",
     "standard": "11.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
+    "prebuild": "npm run test:build && npm run lint",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "test:prod": "CI=true react-scripts test --env=jsdom",
+    "test:build": "CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "standard --fix",
-    "deploy": "gh-pages-deploy"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build -m \"Deploy $(date --utc +'%Y-%m-%d %T')\""
   },
   "standard": {
     "globals": [
@@ -35,14 +37,6 @@
       "jest",
       "expect",
       "fetch"
-    ]
-  },
-  "gh-pages-deploy": {
-    "staticpath": "build",
-    "prep": [
-      "lint",
-      "test:prod",
-      "build"
     ]
   }
 }
