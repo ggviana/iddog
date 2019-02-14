@@ -28,6 +28,7 @@
     "globals": [
       "describe",
       "it",
+      "jest",
       "expect",
       "fetch"
     ]
