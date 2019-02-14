@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { PrivateRoute, PublicRoute } from 'components'
 import { Feed, Lightbox, Picture, Signup } from 'pages'
+import { getCurrentUser } from 'contexts/user'
 import getIn from 'util/getIn'
 
 class LightboxSwitch extends Component {
@@ -26,17 +27,17 @@ class LightboxSwitch extends Component {
   }
 
   render () {
-    return (
+    return getCurrentUser(user =>
       <Fragment>
         <Switch location={this.getLocation()}>
-          <PublicRoute path='/' component={Signup} exact />
-          <PublicRoute path='/signup' component={Signup} />
-          <PrivateRoute path='/feed' component={Feed} exact />
-          <PrivateRoute path='/feed/:id' component={Picture} />
+          <PublicRoute user={user} path='/' component={Signup} exact />
+          <PublicRoute user={user} path='/signup' component={Signup} />
+          <PrivateRoute user={user} path='/feed' component={Feed} exact />
+          <PrivateRoute user={user} path='/feed/:id' component={Picture} exact />
         </Switch>
 
         {this.isLightbox() && (
-          <PrivateRoute path='/feed/:id' component={Lightbox} />
+          <Route path='/feed/:id' component={Lightbox} />
         )}
       </Fragment>
     )

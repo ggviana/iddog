@@ -1,0 +1,84 @@
+.Lightbox {
+  display: inline-block;
+}
+
+.Lightbox-thumbnail {
+  height: 300px;
+  width: 300px;
+}
+
+.Lightbox-fullscreen {
+  z-index: 999;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.8);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s linear;
+}
+
+.Lightbox-fullscreen img {
+  background-color: white;
+  box-shadow: 0 0 20px black;
+  position: fixed;
+  padding: 0;
+  top: 50%;
+  left: 50%;
+  margin: 0 -50% 0 0;
+  max-height: 90%;
+  max-width: 90%;
+  transform: translate(-50%, -50%);
+}
+
+.Lightbox-close,
+.Lightbox-prev,
+.Lightbox-next {
+  z-index: 999;
+  position: fixed;
+  text-decoration: none;
+  visibility: hidden;
+  color: white;
+  font-size: 36px;
+}
+
+.Lightbox-close {
+  top: 1%;
+  right: 1%
+}
+
+.Lightbox-close::after {
+  content: '\00d7';
+}
+
+.Lightbox-prev,
+.Lightbox-next {
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+
+.Lightbox-prev {
+  left: 5%;
+}
+
+.Lightbox-next {
+  right: 5%;
+}
+
+a:target ~ .Lightbox-close,
+a:target ~ .Lightbox-prev,
+a:target ~ .Lightbox-next {
+  visibility: visible;
+}
+
+a:target > .Lightbox-thumbnail + .Lightbox-fullscreen {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.Lightbox-fullscreen {
+  cursor: initial;
+}
