@@ -7,14 +7,14 @@ const placeholder = Array.from(Array(18), (_, i) => i)
 
 const ImageList = ({ images, isLoading, category }) => (
   <div className='ImageList'>
-    {isLoading ?
-        placeholder.map(i => <Img key={i} />) : (
+    {isLoading
+      ? placeholder.map(i => <Img key={i} />) : (
         images.map(item => (
           <LightboxLink className='ImageList-item' key={item.id} id={item.id} category={category}>
             <Img src={item.image} />
           </LightboxLink>
-      ))
-    )}
+        ))
+      )}
   </div>
 )
 

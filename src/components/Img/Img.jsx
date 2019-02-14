@@ -3,8 +3,12 @@ import PropTypes from 'prop-types'
 import './Img.css'
 
 class Img extends React.PureComponent {
-  state = {
-    isReady: false
+  constructor () {
+    super()
+
+    this.state = {
+      isReady: false
+    }
   }
 
   setReady () {
@@ -13,7 +17,8 @@ class Img extends React.PureComponent {
 
   render () {
     const { isReady } = this.state
-    let className = `Img ${this.props.size}`
+    const { size, src, alt = ' ', ...props } = this.props
+    let className = `Img ${size}`
 
     if (isReady) {
       className += ' ready'
@@ -21,21 +26,20 @@ class Img extends React.PureComponent {
 
     return (
       <div className={className}>
-        {this.props.src && (
-          <img {...this.props} onLoad={() => this.setReady()} />
+        {src && (
+          <img src={src} alt={alt} {...props} onLoad={() => this.setReady()} />
         )}
-        <div className='Img-loader'/>
+        <div className='Img-loader' />
       </div>
     )
   }
 }
 
 Img.propTypes = {
-  size: PropTypes.oneOf(['small', 'big'])
+  size: PropTypes.oneOf(['small', 'big', 'portrait'])
 }
 
 Img.defaultProps = {
-  alt: ' ',
   size: 'big'
 }
 

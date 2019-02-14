@@ -10,10 +10,20 @@
 }
 
 .Img img {
+  display: block;
   object-fit: cover;
 }
 
 .Img.small img {
+  max-width: 500px;
+  max-height: 500px;
+}
+
+.Img.portrait img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   max-width: 500px;
   max-height: 500px;
 }
