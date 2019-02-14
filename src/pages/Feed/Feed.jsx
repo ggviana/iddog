@@ -14,25 +14,23 @@ class Feed extends Component {
     }
   }
 
+  changeCategory (category) {
+    this.props.history.push(`/feed?category=${category}`)
+    loadFeed(category)
+  }
+
   render () {
-    return (
+    return visibleFeed(state => (
       <Fragment>
-        {visibleFeed(state => (
-          <Fragment>
-            <CategorySelector
-              active={state.selectedCategory}
-              onChange={category => {
-                this.props.history.push(`/feed?category=${category}`)
-                loadFeed(category)
-              }} />
-            {state.isLoading && <span>Loading</span>}
-            <ImageList
-              images={state.feed}
-              category={state.selectedCategory} />
-          </Fragment>
-        ))}
+        <CategorySelector
+          active={state.selectedCategory}
+          onChange={category => this.changeCategory(category)} />
+        <ImageList
+          images={state.feed}
+          category={state.selectedCategory}
+          isLoading={state.isLoading} />
       </Fragment>
-    )
+    ))
   }
 }
 

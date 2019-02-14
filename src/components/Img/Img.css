@@ -1,0 +1,42 @@
+.Img {
+  height: 100%;
+  position: relative;
+}
+
+.Img img,
+.Img .Img-loader {
+  height: 100%;
+  width: 100%;
+}
+
+.Img img {
+  object-fit: cover;
+}
+
+.Img.small img {
+  max-width: 500px;
+  max-height: 500px;
+}
+
+.Img .Img-loader {
+  animation: loader-animation 1s infinite cubic-bezier(.55, .055, .675, .19);
+  background: #eee linear-gradient(90deg, #eee, #f9f9f9, #eee) no-repeat;
+  background-size: 200px 100%;
+  position: absolute;
+  top: 0;
+  transition: opacity .5s;
+}
+
+.Img.ready .Img-loader {
+  opacity: 0;
+}
+
+@keyframes loader-animation {
+  0% {
+    background-position: -200px 0;
+  }
+  
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}

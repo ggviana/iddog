@@ -3,6 +3,7 @@ import CategorySelector from 'components/CategorySelector/CategorySelector'
 import EmailInput from 'components/EmailInput/EmailInput'
 import Form from 'components/Form/Form'
 import ImageList from 'components/ImageList/ImageList'
+import Img from 'components/Img/Img'
 import Lightbox from 'components/Lightbox/Lightbox'
 import LightboxLink from 'components/LightboxLink/LightboxLink'
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute'
@@ -15,6 +16,7 @@ export {
   EmailInput,
   Form,
   ImageList,
+  Img,
   Lightbox,
   LightboxLink,
   PrivateRoute,

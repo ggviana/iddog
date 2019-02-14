@@ -1,23 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './ImageList.css'
-import { LightboxLink } from 'components'
+import { Img, LightboxLink } from 'components'
 
-const ImageList = ({ images, category }) => (
+const placeholder = Array.from(Array(18), (_, i) => i)
+
+const ImageList = ({ images, isLoading, category }) => (
   <div className='ImageList'>
-    {images.map(dog => (
-      <div className='ImageList-item' key={dog.id}>
-        <LightboxLink id={dog.id} category={dog.category}>
-          <img src={dog.image} alt={`A ${category}`} />
-        </LightboxLink>
-      </div>
-    ))}
+    {isLoading ?
+        placeholder.map(i => <Img key={i} />) : (
+        images.map(item => (
+          <LightboxLink className='ImageList-item' key={item.id} id={item.id} category={category}>
+            <Img src={item.image} />
+          </LightboxLink>
+      ))
+    )}
   </div>
 )
 
 ImageList.propTypes = {
   images: PropTypes.array,
-  category: PropTypes.string
+  category: PropTypes.string,
+  isLoading: PropTypes.bool
 }
 
 export default ImageList

@@ -16,9 +16,7 @@ class LightboxOpen extends Component {
     const { history } = this.props
 
     return get(({ isLoading, selectedDog, selectedCategory, feed }) =>
-      isLoading || selectedDog === null ? (
-        <p>Loading...</p>
-      ) : (
+      !isLoading && selectedDog !== null && (
         <Lightbox
           dog={selectedDog}
           onClose={() => history.replace(`/feed?category=${selectedCategory}`)} />
