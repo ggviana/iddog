@@ -4,8 +4,8 @@ import './CategorySelector.css'
 
 const TYPES = ['husky', 'hound', 'pug', 'labrador']
 
-const CategorySelector = ({ active = 'husky', onChange }) => (
-  <ul className='CategorySelector'>
+const CategorySelector = ({ active = 'husky', animate = true, onChange }) => (
+  <ul className={`CategorySelector ${animate ? 'animate' : ''}`}>
     {TYPES.map(type => (
       <li
         key={type}
@@ -19,7 +19,8 @@ const CategorySelector = ({ active = 'husky', onChange }) => (
 
 CategorySelector.propTypes = {
   onChange: PropTypes.func,
-  active: PropTypes.string
+  active: PropTypes.string,
+  animate: PropTypes.bool
 }
 
 export default CategorySelector

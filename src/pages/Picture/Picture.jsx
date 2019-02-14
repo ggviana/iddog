@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { get, loadFeedById, loadFeed } from 'contexts/feed'
-import { CategorySelector, Img } from 'components'
+import { AppTitle, CategorySelector, Img } from 'components'
 import getCategoryFrom from 'util/getCategoryFrom'
 import getIn from 'util/getIn'
 
@@ -14,21 +14,30 @@ class Picture extends Component {
   }
 
   changeCategory (category) {
-    this.props.history.push(`/feed?category=${category}`)
+    this.props.history.push(`/feed?category=${category}`, {
+      preventAnimation: true
+    })
     loadFeed(category)
   }
 
   render () {
-    return get(({ selectedCategory, selectedDog }) => (
+    return (
       <Fragment>
-        <CategorySelector
-          active={selectedCategory}
-          onChange={category => this.changeCategory(category)} />
-        <Img
-          src={getIn(selectedDog, 'image')}
-          size='portrait' />
+        <AppTitle />
+
+        {get(({ selectedCategory, selectedDog }) => (
+          <Fragment>
+            <CategorySelector
+              active={selectedCategory}
+              onChange={category => this.changeCategory(category)}
+              animate={false} />
+            <Img
+              src={getIn(selectedDog, 'image')}
+              size='portrait' />
+          </Fragment>
+        ))}
       </Fragment>
-    ))
+    )
   }
 }
 

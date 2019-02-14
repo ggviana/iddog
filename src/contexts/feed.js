@@ -42,7 +42,8 @@ export const loadFeedById = (id, category) => set(state => {
   if (selectedDog === null) {
     set({
       isLoading: true,
-      selectedDog: null
+      selectedDog: null,
+      selectedCategory: category || 'husky'
     })
 
     fetchFeed({ category })

@@ -1,13 +1,15 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { signup } from 'services/DogAPI'
 import { get, changeEmail } from 'contexts/signup'
 import { setCurrentUser } from 'contexts/user'
-import { EmailInput, Form } from 'components'
+import { AppTitle, EmailInput, Form, Splash } from 'components'
 import isValidEmail from 'util/isValidEmail'
 import debounce from 'util/debounce'
 
 const Signup = ({ history }) => (
-  <Fragment>
+  <Splash>
+    <AppTitle />
+
     {get(form => (
       <Form>
         <EmailInput
@@ -29,7 +31,7 @@ const Signup = ({ history }) => (
           required />
       </Form>
     ))}
-  </Fragment>
+  </Splash>
 )
 
 export default Signup

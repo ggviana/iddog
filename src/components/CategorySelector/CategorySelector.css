@@ -18,3 +18,17 @@
 .CategorySelector .active {
   font-weight: bold;
 }
+
+.CategorySelector.animate {
+  opacity: 0;
+  animation-name: animate-category-selector;
+  animation-delay: 1s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes animate-category-selector {
+  to {
+    opacity: 1;
+  }
+}
