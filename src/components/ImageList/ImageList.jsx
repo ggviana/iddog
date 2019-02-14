@@ -7,7 +7,7 @@ const ImageList = ({ images, category }) => (
   <div className='ImageList'>
     {images.map(dog => (
       <div className='ImageList-item' key={dog.id}>
-        <LightboxLink id={dog.id}>
+        <LightboxLink id={dog.id} category={dog.category}>
           <img src={dog.image} alt={`A ${category}`} />
         </LightboxLink>
       </div>

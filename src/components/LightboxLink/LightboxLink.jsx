@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-const LightboxLink = ({ id, ...props }) => (
+const LightboxLink = ({ id, category, ...props }) => (
   <Link
     to={{
-      pathname: `/feed/${id}`,
+      pathname: `/feed/${id}?category=${category}`,
       state: {
         lightbox: true
       }
@@ -15,7 +15,8 @@ const LightboxLink = ({ id, ...props }) => (
 )
 
 LightboxLink.propTypes = {
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired
 }
 
 export default LightboxLink
