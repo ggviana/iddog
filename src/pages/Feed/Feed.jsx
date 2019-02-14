@@ -1,14 +1,14 @@
 import React, { Component, Fragment } from 'react'
 import { visibleFeed, loadFeed } from 'contexts/feed'
 import { CategorySelector, ImageList } from 'components'
+import getCategoryFrom from 'util/getCategoryFrom'
 
 class Feed extends Component {
   componentDidMount () {
-    const matched = this.props.location.search.match(/category=(husky|hound|pug|labrador)/i)
+    const preloadedCategory = getCategoryFrom(this.props.location.search)
 
-    if (matched) {
-      const [, preloadedCategory] = matched
-      loadFeed(preloadedCategory.toLowerCase())
+    if (preloadedCategory) {
+      loadFeed(preloadedCategory)
     } else {
       loadFeed()
     }
