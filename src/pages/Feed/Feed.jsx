@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { LightboxLink } from 'components'
 
 const Feed = () => (
-  <div>
+  <Fragment>
     <h1>Feed</h1>
     <LightboxLink id={1}>
       Open 1
     </LightboxLink>
-  </div>
+  </Fragment>
 )
 
 export default Feed

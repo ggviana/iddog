@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 const Lightbox = () => (
-  <div>
+  <Fragment>
     <h1>Lightbox</h1>
-  </div>
+  </Fragment>
 )
 
 export default Lightbox

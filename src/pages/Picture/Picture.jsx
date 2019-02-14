@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 const Picture = () => (
-  <div>
+  <Fragment>
     <h1>Picture</h1>
-  </div>
+  </Fragment>
 )
 
 export default Picture
