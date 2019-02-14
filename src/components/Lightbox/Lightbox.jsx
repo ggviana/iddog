@@ -1,29 +1,15 @@
 import React from 'react'
+import './Lightbox.css'
 
-const Lightbox = ({ id, src, next, prev }) => {
+const Lightbox = ({ dog, onClose }) => {
+  const { image } = dog
   return (
     <div className='Lightbox'>
-      <a id={id} href={`#${id}`}>
-        <img className='Lightbox-thumbnail' src={src} />
+      <div className='Lightbox-fullscreen'>
+        <img src={image} alt={' '} />
+      </div>
 
-        <span className='Lightbox-fullscreen'>
-          <img src={src} />
-        </span>
-      </a>
-
-      <a className='Lightbox-close' href='#void' />
-
-      {next && (
-        <a className='Lightbox-next' href={next}>
-          ›
-        </a>
-      )}
-
-      {prev && (
-        <a className='Lightbox-next' href={prev}>
-          ‹
-        </a>
-      )}
+      <span className='Lightbox-close' onClick={onClose} />
     </div>
   )
 }
