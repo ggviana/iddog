@@ -1,6 +1,7 @@
 import axios from 'axios'
 import EntityMap from 'util/EntityMap'
 import id from 'util/id'
+import getIn from 'util/getIn'
 import LocalStorage from './LocalStorage'
 
 const requester = axios.create({
@@ -8,26 +9,20 @@ const requester = axios.create({
 })
 
 requester.interceptors.response.use(id, data => {
-  if (data.response.status === 401) {
+  if (getIn(data, 'response.status') === 401) {
     LocalStorage.remove('_u')
   }
 })
 
-export const extractDogIdFromImage = image => image.replace(/^.*?img\/.*?\/.*?_(.*?)\..*/, '$1')
+export const extractIdFrom = text => text.replace(/^.*?img\/.*?\/.*?_(.*?)\..*/, '$1')
 
-const getDogFrom = (category, image, order) => {
-  const id = extractDogIdFromImage(image)
-
-  return {
+const normalize = ({ category, list }) => list
+  .map((image, order) => ({
+    id: extractIdFrom(image),
     category,
-    id,
     image,
     order
-  }
-}
-
-const normalizeDogs = ({ category, list }) => list
-  .map((image, order) => getDogFrom(category, image, order))
+  }))
   .reduce(
     (map, dog) => map.set(dog.id, dog),
     new EntityMap()
@@ -50,6 +45,6 @@ export const fetchFeed = ({ category = null } = {}) => {
   }
 
   return requester.get('/feed', { params })
-    .then(response => response.data)
-    .then(normalizeDogs)
+    .then(response => getIn(response, 'data', { list: [] }))
+    .then(normalize)
 }

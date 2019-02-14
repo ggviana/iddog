@@ -44,8 +44,8 @@ describe('DogAPI', () => {
   })
 
   it('should extract the id from images', () => {
-    expect(DogAPI.extractDogIdFromImage('https://dog.ceo/api/img/husky/n02110185_10047.jpg')).toBe('10047')
-    expect(DogAPI.extractDogIdFromImage('https://dog.ceo/api/img/husky/n02110185_10116.jpg')).toBe('10116')
-    expect(DogAPI.extractDogIdFromImage('https://dog.ceo/api/img/husky/n02110185_10171.jpg')).toBe('10171')
+    expect(DogAPI.extractIdFrom('https://dog.ceo/api/img/husky/n02110185_10047.jpg')).toBe('10047')
+    expect(DogAPI.extractIdFrom('https://dog.ceo/api/img/husky/n02110185_10116.jpg')).toBe('10116')
+    expect(DogAPI.extractIdFrom('https://dog.ceo/api/img/husky/n02110185_10171.jpg')).toBe('10171')
   })
 })
