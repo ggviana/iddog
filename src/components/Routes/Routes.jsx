@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { PrivateRoute, PublicRoute } from 'components'
-import { Feed, Lightbox, Picture, Signup } from 'pages'
+import { Feed, LightboxOpen, Picture, Signup } from 'pages'
 import { getCurrentUser } from 'contexts/user'
 import getIn from 'util/getIn'
 
@@ -19,7 +19,14 @@ class LightboxSwitch extends Component {
   }
 
   isLightbox () {
-    return getIn(this.props, 'location.state.lightbox', false)
+    const { location } = this.props
+    return getIn(location, 'state.lightbox', false) && !this.lastLocationWasFeedItem()
+  }
+
+  lastLocationWasFeedItem () {
+    const pathname = getIn(this.previousLocation, 'pathname', '')
+
+    return pathname.match(/\/feed\/\d+$/i)
   }
 
   getLocation () {
@@ -37,7 +44,7 @@ class LightboxSwitch extends Component {
         </Switch>
 
         {this.isLightbox() && (
-          <Route path='/feed/:id' component={Lightbox} />
+          <Route path='/feed/:id' component={LightboxOpen} />
         )}
       </Fragment>
     )
