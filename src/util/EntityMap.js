@@ -3,6 +3,10 @@ class EntityMap {
     this._map = new Map()
   }
 
+  get (k) {
+    return this._map.get(k)
+  }
+
   set (k, v) {
     this._map.set(k, v)
     return this
