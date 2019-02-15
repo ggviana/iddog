@@ -13,7 +13,7 @@
     "reworm": "2.0.2"
   },
   "devDependencies": {
-    "enzyme": "3.4.4",
+    "enzyme": "3.8.0",
     "enzyme-adapter-react-16": "1.2.0",
     "gh-pages": "2.0.1",
     "jest-localstorage-mock": "2.2.0",
